@@ -53,8 +53,8 @@ try{
             do{
                 $url = $reader.ReadLine()
                 $k++
-                Write-Progress "Building list" "File $($j + 1) of $($i) | Total lines read $($k) | Lines written $($master.Count) | $([Math]::Round(($master.count / $k) * 100, 1))%"
-                
+                Write-Progress "Building list" "File $($j + 1) of $($i) | Total lines read $($k) | Non-comment lines written $($master.Count) ($([Math]::Round(($master.count / $k) * 100, 1))%)"
+
                 if($url -match '^#'){continue}
                 if(($null -eq $url) -or ($url -eq '')){continue}
                 if($whitelist -icontains $url){continue}
