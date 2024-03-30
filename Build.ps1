@@ -39,21 +39,33 @@ $progressId = get-random -minimum 1000 -Maximum 2222
 
 $strm = New-Object System.IO.StreamWriter('./Master.txt', $false)
 $strm.AutoFlush = $false
+$reader = $null
 
 try{
     $k = 0
     $master = New-Object Collections.Generic.List[String]
-    for($j = 0; $j -lt $i; $j++){
-        foreach($url in [System.IO.File]::ReadLines("./$($j).txt")){
-            $k++
-            Write-Progress "Building list" "File $($j + 1) of $($i) | Total lines read $($k) | Lines written $($master.Count) | $([Math]::Round(($k / $master.count) * 100, 1))%"
-            if($url -match '^#'){continue}
-            if(($null -eq $url) -or ($url -eq '')){continue}
-            if($whitelist -icontains $url){continue}
-            if($master.Contains($url)){continue}
+    $master.clear();
 
-            $master.Add($url)
-            $strm.WriteLine($url)
+    for($j = 0; $j -lt $i; $j++){
+        $reader = New-Object System.IO.StreamReader("./$($j).txt")
+        try{
+
+            do{
+                $url = $reader.ReadLine()
+                $k++
+                Write-Progress "Building list" "File $($j + 1) of $($i) | Total lines read $($k) | Lines written $($master.Count) | $([Math]::Round(($master.count / $k) * 100, 1))%"
+                
+                if($url -match '^#'){continue}
+                if(($null -eq $url) -or ($url -eq '')){continue}
+                if($whitelist -icontains $url){continue}
+                if($master.Contains($url)){continue}
+
+                $master.Add($url)
+                $strm.WriteLine($url)
+
+            }while($reader.EndOfStream -eq $false)            
+        }finally{
+            $reader.Close()
         }
     }
 
