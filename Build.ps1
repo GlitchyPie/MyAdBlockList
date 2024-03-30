@@ -10,11 +10,13 @@ foreach($line in $lines){
         continue
     }
 
+    if($line -match '^>'){continue}
+
     $line = $line.Trim()
-    if($line -eq '---- URLS'){
+    if($line -eq '## URLS'){
         $inUrls = $true
         $inWhitelist = $false
-    }elseif($line -eq '---- Whitelisted'){
+    }elseif($line -eq '## Whitelisted'){
         $inUrls = $false
         $inWhitelist = $true
     }elseif($inUrls){
@@ -27,7 +29,7 @@ foreach($line in $lines){
 $i = 0
 foreach($url in $urls){
     try{
-        Remove-Item "./$($i).txt"
+        Remove-Item "./$($i).txt" -ErrorAction SilentlyContinue
     }catch{}
     Invoke-WebRequest $url -OutFile "./$($i).txt"
     $i++
@@ -35,21 +37,16 @@ foreach($url in $urls){
 
 $progressId = get-random -minimum 1000 -Maximum 2222
 
+$strm = New-Object System.IO.StreamWriter('./Master.txt', $false)
+$strm.AutoFlush = $false
 
 try{
-    Remove-Item "./master.txt"
-}catch{}
-$strm = New-Object System.IO.StreamWriter('./Master.txt')
-
-try{
-
+    $k = 0
     $master = New-Object Collections.Generic.List[String]
-
     for($j = 0; $j -lt $i; $j++){
-        $k = 0
         foreach($url in [System.IO.File]::ReadLines("./$($j).txt")){
             $k++
-            Write-Progress "Building list" "File $($j + 1) of $($i) | lines read $($k) | Lines written $($master.Count)"
+            Write-Progress "Building list" "File $($j + 1) of $($i) | Total lines read $($k) | Lines written $($master.Count) | $([Math]::Round(($k / $master.count) * 100, 1))%"
             if($url -match '^#'){continue}
             if(($null -eq $url) -or ($url -eq '')){continue}
             if($whitelist -icontains $url){continue}
@@ -61,7 +58,7 @@ try{
     }
 
 }finally{
+    Write-Progress -Id $progressId -Completed
     $strm.Flush()
     $strm.Close()
-    Write-Progress -Completed -Id $progressId
 }

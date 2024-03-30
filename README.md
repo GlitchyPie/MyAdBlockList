@@ -1,7 +1,11 @@
 # MyAdBlockList
-Combined custom list of add domains with a handful of removed domains.
+Combined custom list of ad domains with a handful of removed domains, mostly ones that broke NowTv if blocked.
 
----- URLS
+
+
+## URLS
+
+> Diversion medium blocking list, file size ~1.8 MB, ~91,000 blocked domains.
 
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
@@ -9,7 +13,7 @@ https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
 
 
 
----- Whitelisted
+## Whitelisted
 
 diversion-adblocking-ip.address
 
