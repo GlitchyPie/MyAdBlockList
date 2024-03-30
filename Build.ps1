@@ -5,52 +5,58 @@ $whitelist = @()
 
 $inUrls = $false
 $inWhitelist = $false
-foreach($line in $lines){
-    if(($null -eq $line) -or ($line -eq '')){
+foreach ($line in $lines) {
+    if (($null -eq $line) -or ($line -eq '')) {
         continue
     }
 
     $line = $line.Trim()
 
-    if($line.StartsWith('>')){
+    if ($line.StartsWith('>')) {
         continue
-    }elseif($line -ieq '## URLS'){
+    }
+    elseif ($line -ieq '## URLS') {
         $inUrls = $true
         $inWhitelist = $false
-    }elseif($line -ieq '## Whitelisted'){
+    }
+    elseif ($line -ieq '## Whitelisted') {
         $inUrls = $false
         $inWhitelist = $true
-    }elseif($inUrls){
+    }
+    elseif ($inUrls) {
         $urls += $line
-    }elseif($inWhitelist){
+    }
+    elseif ($inWhitelist) {
         $whitelist += $line
     }
 }
 
-
-$whitelist += 'localhost'
-$whitelist += 'localhost.localdomain'
-$whitelist += 'local'
-$whitelist += 'broadcasthost'
-$whitelist += 'ip6-localhost'
-$whitelist += 'ip6-loopback'
-$whitelist += 'ip6-localnet'
-$whitelist += 'ip6-mcastprefix'
-$whitelist += 'ip6-allnodes'
-$whitelist += 'ip6-allrouters'
-$whitelist += 'ip6-allhosts'
-$whitelist += '0.0.0.0'
+$whitelist += {
+    'localhost'
+    'localhost.localdomain'
+    'local'
+    'broadcasthost'
+    'ip6-localhost'
+    'ip6-loopback'
+    'ip6-localnet'
+    'ip6-mcastprefix'
+    'ip6-allnodes'
+    'ip6-allrouters'
+    'ip6-allhosts'
+    '0.0.0.0'
+}
 
 $i = 0
-foreach($url in $urls){
-    try{
+foreach ($url in $urls) {
+    try {
         Remove-Item "./$($i).txt" -ErrorAction SilentlyContinue
-    }catch{}
+    }
+    catch {}
     Invoke-WebRequest $url -OutFile "./$($i).txt"
     $i++
 }
 
-$progressId = get-random -minimum 1000 -Maximum 2222
+$progressId = Get-Random -Minimum 1000 -Maximum 2222
 
 $masterOptions = New-Object System.IO.FileStreamOptions
 
@@ -73,53 +79,57 @@ $openOptions.Options = 134217728 #System.IO.FileOptions.Squential
 $openOptions.Share = 1 #System.IO.FileShare.Read
 $openOptions.BufferSize = 8192 #Double the default 4096
 
-try{
+try {
 
     $k = 0
     $master = New-Object Collections.Generic.List[String]
-    $master.clear();
+    $master.clear()
 
-    for($j = 0; $j -lt $i; $j++){
+    for ($j = 0; $j -lt $i; $j++) {
         
         $reader = New-Object System.IO.StreamReader("./$($j).txt", $openOptions)
 
-        try{
-            do{
-                $url = $reader.ReadLine().Trim()
+        try {
+
+            do {
+                $url = $reader.ReadLine()
                 $k++
-                if(($k % 10) -eq 0){
-                    Write-Progress "Building list" `
-                                   "File $($j + 1) of $($i) | Total lines read $($k) | Entries written $($master.Count) | $([Math]::Round(($master.count / $k) * 100, 1))% of total input" `
-                                   -Id $progressId
+                if (($k % 10) -eq 0) {
+                    Write-Progress 'Building list' `
+                        "File $($j + 1) of $($i) | Total lines read $($k) | Entries written $($master.Count) | $([Math]::Round(($master.count / $k) * 100, 1))% of total input" `
+                        -Id $progressId
                 }
                 
+                if (($null -eq $url) -or ($url -eq '')) { continue }
 
-                if(($null -eq $url) -or ($url -eq '')){continue}
-                if($url.StartsWith('#')){continue}
+                $url = $url.Trim().ToLowerInvariant()
 
-                $url = $url.ToLowerInvariant()
-
+                if ($url.StartsWith('#')) { continue }
 
                 $split = $url -split ' '
-                if($split.Length -eq 0){continue}
-                if($split.Length -eq 1){
+                if ($split.Length -eq 0) { continue }
+                if ($split.Length -eq 1) {
                     $url = $split[0]
-                }else{
+                }
+                else {
                     $url = $split[1]
                 }
 
-                if($whitelist -icontains $url){continue}
-                if($master.Contains($url)){continue}
+                if ($whitelist -icontains $url) { continue }
+                if ($master.Contains($url)) { continue }
 
                 $master.Add($url)
                 $strm.WriteLine($url)
-            }while($reader.EndOfStream -eq $false)            
-        }finally{
+            }while ($reader.EndOfStream -eq $false)
+            
+        }
+        finally {
             $reader.Close()
         }
     }
 
-}finally{
+}
+finally {
     Write-Progress -Id $progressId -Completed
     $strm.Flush()
     $strm.Close()
