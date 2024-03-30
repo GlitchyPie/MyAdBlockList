@@ -60,6 +60,7 @@ $masterOptions.Options = 134217728 #System.IO.FileOptions.Squential
 $masterOptions.Share = 1 #System.IO.FileShare.Read
 $masterOptions.BufferSize = 8192 #Double the default 4096
 
+
 $strm = New-Object System.IO.StreamWriter('./Master.txt', $masterOptions)
 $strm.AutoFlush = $false
 
@@ -96,6 +97,9 @@ try{
                 if(($null -eq $url) -or ($url -eq '')){continue}
                 if($url.StartsWith('#')){continue}
 
+                $url = $url.ToLowerInvariant()
+
+
                 $split = $url -split ' '
                 if($split.Length -eq 0){continue}
                 if($split.Length -eq 1){
@@ -105,11 +109,10 @@ try{
                 }
 
                 if($whitelist -icontains $url){continue}
-                if($master.Contains($url.ToLowerInvariant())){continue}
+                if($master.Contains($url)){continue}
 
-                $master.Add($url.ToLowerInvariant())
+                $master.Add($url)
                 $strm.WriteLine($url)
-
             }while($reader.EndOfStream -eq $false)            
         }finally{
             $reader.Close()
