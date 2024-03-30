@@ -15,8 +15,6 @@ https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
 
 ## Whitelisted
 
-diversion-adblocking-ip.address
-
 securepupads.g.doubleclick.net
 
 pubads.g.doubleclick.net
