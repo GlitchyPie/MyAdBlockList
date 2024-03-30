@@ -26,6 +26,20 @@ foreach($line in $lines){
     }
 }
 
+
+$whitelist += 'localhost'
+$whitelist += 'localhost.localdomain'
+$whitelist += 'local'
+$whitelist += 'broadcasthost'
+$whitelist += 'ip6-localhost'
+$whitelist += 'ip6-loopback'
+$whitelist += 'ip6-localnet'
+$whitelist += 'ip6-mcastprefix'
+$whitelist += 'ip6-allnodes'
+$whitelist += 'ip6-allrouters'
+$whitelist += 'ip6-allhosts'
+$whitelist += '0.0.0.0'
+
 $i = 0
 foreach($url in $urls){
     try{
@@ -53,13 +67,24 @@ try{
             do{
                 $url = $reader.ReadLine()
                 $k++
-                Write-Progress "Building list" "File $($j + 1) of $($i) | Total lines read $($k) | Non-comment lines written $($master.Count) ($([Math]::Round(($master.count / $k) * 100, 1))%)"
+                Write-Progress "Building list" `
+                               "File $($j + 1) of $($i) | Total lines read $($k) | Non-comment lines written $($master.Count) ($([Math]::Round(($master.count / $k) * 100, 1))%)" `
+                               -Id $progressId
 
-                if($url -match '^#'){continue}
                 if(($null -eq $url) -or ($url -eq '')){continue}
+                if($url -match '^#'){continue}
+
+                $split = $url -split ' '
+                if($split.Length -eq 0){continue}
+                if($split.Length -eq 1){
+                    $url = $split[0]
+                }else{
+                    $url = $split[1]
+                }
+
                 if($whitelist -icontains $url){continue}
                 if($master.Contains($url)){continue}
-
+                
                 $master.Add($url)
                 $strm.WriteLine($url)
 
