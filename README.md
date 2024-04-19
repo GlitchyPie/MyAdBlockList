@@ -6,6 +6,7 @@ Combined custom list of ad domains with a handful of removed domains, mostly one
 ## URLS
 
 > Diversion medium blocking list, file size ~1.8 MB, ~91,000 blocked domains.
+> https://diversion.ch/diversion/use/blocking-file-hosts-files.html
 
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
