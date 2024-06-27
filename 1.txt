@@ -11,17 +11,17 @@
 # License: https://git.frogeye.fr/geoffrey/eulaurarien/src/branch/master/LICENSE
 # Acknowledgements: https://hostfiles.frogeye.fr/#acknowledgements
 #
-# Generation software: eulaurarien v3.0.0
-# List generation date: 2024-03-29T00:14:48+01:00
+# Generation software: eulaurarien 
+# List generation date: 2024-06-27T00:04:18+02:00
 # Oldest record: 2021-12-31T14:30:24+01:00
 # Number of source websites: 873
-# Number of source subdomains: 18981
-# Number of source DNS records: 17767
+# Number of source subdomains: 19197
+# Number of source DNS records: 17977
 #
 # Input rules: asns: 6, zones: 48
-# Subsequent rules: asns: 6, hostnames: 14148, ip4s: 70, zones: 48
-# … no dupplicates: asns: 6, hostnames: 11907, zones: 48
-# Output rules: hostnames: 14148
+# Subsequent rules: asns: 6, hostnames: 14170, ip4s: 74, zones: 48
+# … no dupplicates: asns: 6, hostnames: 11908, zones: 48
+# Output rules: hostnames: 14170
 #
 
 0.0.0.0 101230059950694.wt-eu02.net
@@ -419,6 +419,7 @@
 0.0.0.0 ads.par.vip.prod.criteo.com
 0.0.0.0 ads.sg1.vip.prod.criteo.com
 0.0.0.0 ads.spacenine.biz
+0.0.0.0 ads.us5.vip.prod.criteo.com
 0.0.0.0 ads.us.criteo.com
 0.0.0.0 ads.va1.vip.prod.criteo.com
 0.0.0.0 adt.com.102.112.2o7.net
@@ -809,6 +810,7 @@
 0.0.0.0 bidder.nl3.vip.prod.criteo.com
 0.0.0.0 bidder.par.vip.prod.criteo.com
 0.0.0.0 bidder.sg1.vip.prod.criteo.com
+0.0.0.0 bidder.us5.vip.prod.criteo.com
 0.0.0.0 bidder.va1.vip.prod.criteo.com
 0.0.0.0 bigfishgamesinc.tt.omtrdc.net
 0.0.0.0 big.srax.com
@@ -911,6 +913,7 @@
 0.0.0.0 bulkmail.acadian-asset.com
 0.0.0.0 bum7.bymycar.fr
 0.0.0.0 burytimes-gb.burytimes.co.uk
+0.0.0.0 b.us5.vip.prod.criteo.com
 0.0.0.0 businessengage.comcast.com
 0.0.0.0 business.guinnessworldrecords.com
 0.0.0.0 businessmaking.progress.com
@@ -964,6 +967,7 @@
 0.0.0.0 cas.par.vip.prod.criteo.com
 0.0.0.0 cas.sg1.vip.prod.criteo.com
 0.0.0.0 castorama.eulerian.net
+0.0.0.0 cas.us5.vip.prod.criteo.com
 0.0.0.0 cas.us.criteo.com
 0.0.0.0 cas.va1.vip.prod.criteo.com
 0.0.0.0 cat.am5.vip.prod.criteo.com
@@ -981,6 +985,7 @@
 0.0.0.0 cat.par.vip.prod.criteo.com
 0.0.0.0 catracking.finning.com
 0.0.0.0 cat.sg1.vip.prod.criteo.com
+0.0.0.0 cat.us5.vip.prod.criteo.com
 0.0.0.0 cat.va1.vip.prod.criteo.com
 0.0.0.0 cat.va.us.criteo.com
 0.0.0.0 cbcca.hb.omtrdc.net
@@ -996,6 +1001,7 @@
 0.0.0.0 cbsdigitalmedia.hb.omtrdc.net
 0.0.0.0 cbsd.nl3.vip.prod.criteo.com
 0.0.0.0 cbsd.par.vip.prod.criteo.com
+0.0.0.0 cbsd.us5.vip.prod.criteo.com
 0.0.0.0 cbsd.va1.vip.prod.criteo.com
 0.0.0.0 cbs.hb-api.omtrdc.net
 0.0.0.0 cbsinteractive.hb.omtrdc.net
@@ -1748,6 +1754,7 @@
 0.0.0.0 dynamic.nl3.vip.prod.criteo.com
 0.0.0.0 dynamic.par.vip.prod.criteo.com
 0.0.0.0 dynamic.sg1.vip.prod.criteo.com
+0.0.0.0 dynamic.us5.vip.prod.criteo.com
 0.0.0.0 dynamic.va1.vip.prod.criteo.com
 0.0.0.0 e2.hazeldenbettyford.org
 0.0.0.0 e3rd01.eulerian.net
@@ -2408,6 +2415,7 @@
 0.0.0.0 extranets.nl3.vip.prod.criteo.com
 0.0.0.0 extranets.par.vip.prod.criteo.com
 0.0.0.0 extranets.sg1.vip.prod.criteo.com
+0.0.0.0 extranets.us5.vip.prod.criteo.com
 0.0.0.0 extranets.va1.vip.prod.criteo.com
 0.0.0.0 eyefinity.actonsoftware.com
 0.0.0.0 f1.mailperf.com
@@ -2730,6 +2738,7 @@
 0.0.0.0 gbc0.nl3.eu.criteo.com
 0.0.0.0 gbc0.nl.eu.criteo.com
 0.0.0.0 gbc0.sg1.as.criteo.com
+0.0.0.0 gbc0.us5.us.criteo.com
 0.0.0.0 gbc0.va.us.criteo.com
 0.0.0.0 gbc1.da.us.criteo.com
 0.0.0.0 gbc1.fr3.eu.criteo.com
@@ -2738,6 +2747,7 @@
 0.0.0.0 gbc1.nl3.eu.criteo.com
 0.0.0.0 gbc1.nl.eu.criteo.com
 0.0.0.0 gbc1.sg1.as.criteo.com
+0.0.0.0 gbc1.us5.us.criteo.com
 0.0.0.0 gbc1.va.us.criteo.com
 0.0.0.0 gbc2.da.us.criteo.com
 0.0.0.0 gbc2.fr3.eu.criteo.com
@@ -2746,6 +2756,7 @@
 0.0.0.0 gbc2.nl3.eu.criteo.com
 0.0.0.0 gbc2.nl.eu.criteo.com
 0.0.0.0 gbc2.sg1.as.criteo.com
+0.0.0.0 gbc2.us5.us.criteo.com
 0.0.0.0 gbc2.va.us.criteo.com
 0.0.0.0 gbc3.da.us.criteo.com
 0.0.0.0 gbc3.fr3.eu.criteo.com
@@ -2754,6 +2765,7 @@
 0.0.0.0 gbc3.nl3.eu.criteo.com
 0.0.0.0 gbc3.nl.eu.criteo.com
 0.0.0.0 gbc3.sg1.as.criteo.com
+0.0.0.0 gbc3.us5.us.criteo.com
 0.0.0.0 gbc3.va.us.criteo.com
 0.0.0.0 gbc4.da.us.criteo.com
 0.0.0.0 gbc4.fr3.eu.criteo.com
@@ -2762,6 +2774,7 @@
 0.0.0.0 gbc4.nl3.eu.criteo.com
 0.0.0.0 gbc4.nl.eu.criteo.com
 0.0.0.0 gbc4.sg1.as.criteo.com
+0.0.0.0 gbc4.us5.us.criteo.com
 0.0.0.0 gbc4.va.us.criteo.com
 0.0.0.0 gbc5.da.us.criteo.com
 0.0.0.0 gbc5.fr3.eu.criteo.com
@@ -2770,6 +2783,7 @@
 0.0.0.0 gbc5.nl3.eu.criteo.com
 0.0.0.0 gbc5.nl.eu.criteo.com
 0.0.0.0 gbc5.sg1.as.criteo.com
+0.0.0.0 gbc5.us5.us.criteo.com
 0.0.0.0 gbc5.va.us.criteo.com
 0.0.0.0 gbc6.da.us.criteo.com
 0.0.0.0 gbc6.fr3.eu.criteo.com
@@ -2778,6 +2792,7 @@
 0.0.0.0 gbc6.nl3.eu.criteo.com
 0.0.0.0 gbc6.nl.eu.criteo.com
 0.0.0.0 gbc6.sg1.as.criteo.com
+0.0.0.0 gbc6.us5.us.criteo.com
 0.0.0.0 gbc6.va.us.criteo.com
 0.0.0.0 gbc7.da.us.criteo.com
 0.0.0.0 gbc7.fr3.eu.criteo.com
@@ -2786,6 +2801,7 @@
 0.0.0.0 gbc7.nl3.eu.criteo.com
 0.0.0.0 gbc7.nl.eu.criteo.com
 0.0.0.0 gbc7.sg1.as.criteo.com
+0.0.0.0 gbc7.us5.us.criteo.com
 0.0.0.0 gbc7.va.us.criteo.com
 0.0.0.0 gbc8.da.us.criteo.com
 0.0.0.0 gbc8.fr3.eu.criteo.com
@@ -2794,6 +2810,7 @@
 0.0.0.0 gbc8.nl3.eu.criteo.com
 0.0.0.0 gbc8.nl.eu.criteo.com
 0.0.0.0 gbc8.sg1.as.criteo.com
+0.0.0.0 gbc8.us5.us.criteo.com
 0.0.0.0 gbc8.va.us.criteo.com
 0.0.0.0 gbc.criteo.com
 0.0.0.0 gbc.fr3.vip.prod.criteo.com
@@ -3989,6 +4006,7 @@
 0.0.0.0 gum.nl3.vip.prod.criteo.com
 0.0.0.0 gum.par.vip.prod.criteo.com
 0.0.0.0 gum.sg1.vip.prod.criteo.com
+0.0.0.0 gum.us5.vip.prod.criteo.com
 0.0.0.0 gum.va1.vip.prod.criteo.com
 0.0.0.0 gundersenhealth.hrm.healthgrades.com
 0.0.0.0 guq9.vente-unique.it
@@ -7218,6 +7236,7 @@
 0.0.0.0 mug.nl3.vip.prod.criteo.com
 0.0.0.0 mug.par.vip.prod.criteo.com
 0.0.0.0 mug.sg1.vip.prod.criteo.com
+0.0.0.0 mug.us5.vip.prod.criteo.com
 0.0.0.0 mug.va1.vip.prod.criteo.com
 0.0.0.0 mutualofomahaemail.com
 0.0.0.0 mva1.maeva.com
@@ -13526,6 +13545,7 @@
 0.0.0.0 static.nl3.vip.prod.criteo.net
 0.0.0.0 static.par.vip.prod.criteo.net
 0.0.0.0 static.sg1.vip.prod.criteo.net
+0.0.0.0 static.us5.vip.prod.criteo.net
 0.0.0.0 static.va1.vip.prod.criteo.net
 0.0.0.0 stats.radio-canada.ca
 0.0.0.0 stefanpiaskowski01.webtrekk.net
@@ -13683,6 +13703,7 @@
 0.0.0.0 us.chantelle-com.eulerian.net
 0.0.0.0 user-registration.fr3.vip.prod.criteo.com
 0.0.0.0 user-registration.nl3.vip.prod.criteo.com
+0.0.0.0 user-registration.us5.vip.prod.criteo.com
 0.0.0.0 us-plz-as19750.anchors.atlas.ripe.net
 0.0.0.0 us-qas-as19750.anchors.atlas.ripe.net
 0.0.0.0 ut.actonsoftware.com
@@ -13862,6 +13883,7 @@
 0.0.0.0 widget.nl3.vip.prod.criteo.com
 0.0.0.0 widget.par.vip.prod.criteo.com
 0.0.0.0 widget.sg1.vip.prod.criteo.com
+0.0.0.0 widget.us5.vip.prod.criteo.com
 0.0.0.0 widget.us.criteo.com
 0.0.0.0 widget.va1.vip.prod.criteo.com
 0.0.0.0 wirtschaftskammer01.webtrekk.net

@@ -22,3 +22,7 @@ pubads.g.doubleclick.net
 dpm.demdex.net
 
 analytics.faw.sky.com
+
+2a7e9.v.fwmrm.net
+
+vbo2hhedhkakabpe8j5malnav.litix.io

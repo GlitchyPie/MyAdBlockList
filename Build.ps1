@@ -52,7 +52,7 @@ foreach ($url in $urls) {
         Remove-Item "./$($i).txt" -ErrorAction SilentlyContinue
     }
     catch {}
-    Invoke-WebRequest $url -OutFile "./$($i).txt"
+    Invoke-WebRequest $url -OutFile "./$($i).txt" -ErrorAction Continue
     $i++
 }
 
@@ -62,7 +62,7 @@ $masterOptions = New-Object System.IO.FileStreamOptions
 
 $masterOptions.Access = 3 #System.IO.FileAccess.ReadWrite
 $masterOptions.Mode = 2 #System.IO.FileMode.Create
-$masterOptions.Options = 134217728 #System.IO.FileOptions.Squential
+$masterOptions.Options = 134217728 #System.IO.FileOptions.Sequential
 $masterOptions.Share = 1 #System.IO.FileShare.Read
 $masterOptions.BufferSize = 8192 #Double the default 4096
 
@@ -75,7 +75,7 @@ $reader = $null
 $openOptions = New-Object System.IO.FileStreamOptions
 $openOptions.Access = 1 #System.IO.FileAccess.Read
 $openOptions.Mode = 3 #System.IO.FileMode.Open
-$openOptions.Options = 134217728 #System.IO.FileOptions.Squential
+$openOptions.Options = 134217728 #System.IO.FileOptions.Sequential
 $openOptions.Share = 1 #System.IO.FileShare.Read
 $openOptions.BufferSize = 8192 #Double the default 4096
 
