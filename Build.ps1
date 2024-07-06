@@ -5,14 +5,10 @@ $whitelist = @()
 
 $inUrls = $false
 $inWhitelist = $false
+$regexWhiteList = @()
 foreach ($line in $lines) {
-    if (($null -eq $line) -or ($line -eq '')) {
-        continue
-    }
-
-    $line = $line.Trim()
-
-    if ($line.StartsWith('>')) {
+    $line = $($line ?? '').Trim()
+    if ($line -eq '') {
         continue
     }
     elseif ($line -ieq '## URLS') {
@@ -23,11 +19,18 @@ foreach ($line in $lines) {
         $inUrls = $false
         $inWhitelist = $true
     }
-    elseif ($inUrls) {
-        $urls += $line
+    elseif ($line -imatch '^[a-z0-9]') {
+        if ($inUrls) {
+            $urls += $line
+        }
+        elseif ($inWhitelist) {
+            $whitelist += $line
+        }
     }
-    elseif ($inWhitelist) {
-        $whitelist += $line
+    elseif ($line -imatch '^\|[^|]+\|$') {
+        if ($inWhitelist) {
+            $regexWhiteList += $line.Substring(1, $line.Length - 2)
+        }
     }
 }
 
@@ -82,7 +85,8 @@ $openOptions.BufferSize = 8192 #Double the default 4096
 try {
 
     $k = 0
-    $master = New-Object Collections.Generic.List[String]
+    $master = New-Object Collections.Generic.SortedSet[String]  #HOLY FUCK IS THIS QUICKER!
+    #$master = New-Object Collections.Generic.List[String]
     $master.clear()
 
     for ($j = 0; $j -lt $i; $j++) {
@@ -97,7 +101,8 @@ try {
                 if (($k % 10) -eq 0) {
                     Write-Progress 'Building list' `
                         "File $($j + 1) of $($i) | Total lines read $($k) | Entries written $($master.Count) | $([Math]::Round(($master.count / $k) * 100, 1))% of total input" `
-                        -Id $progressId
+                        $progressId `
+                        -PercentComplete $(($reader.BaseStream.Position / $reader.BaseStream.Length) * 100)
                 }
                 
                 if (($null -eq $url) -or ($url -eq '')) { continue }
@@ -115,10 +120,21 @@ try {
                     $url = $split[1]
                 }
 
-                if ($whitelist -icontains $url) { continue }
+                if ($whitelist -icontains $url) { 
+                    Write-Host "WHITELISTED: $($url)"
+                    continue
+                }
+                else {
+                    foreach ($rx in $regexWhiteList) {
+                        if ($url -imatch $rx) {
+                            Write-Host "WHITELISTED: $($url)"
+                            continue
+                        }
+                    }
+                }
                 if ($master.Contains($url)) { continue }
 
-                $master.Add($url)
+                $master.Add($url) | Out-Null
                 $strm.WriteLine($url)
             }while ($reader.EndOfStream -eq $false)
             
