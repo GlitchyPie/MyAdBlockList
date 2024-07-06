@@ -5444,12 +5444,6 @@ dat.funheroic.com
 pub.funshion.com
 pokkt.fuse-ad.com
 leanmobi.fusetracking.com
-fwmrm.net
-adm.fwmrm.net
-ads.aws.fwmrm.net
-prd.ads.aws.fwmrm.net
-g13v.prd.ads.aws.fwmrm.net
-nbcu.prd.ads.aws.fwmrm.net
 api.fyber.com
 api-rewarded-video.fyber.com
 dau.fyber.com
@@ -145315,7 +145309,6 @@ fast.td.demdex.net
 ma156-r.analytics.edgekey.net
 my-cdn.effectivemeasure.net
 cdn.fastclick.net
-m1.fwmrm.net
 js.indexww.com
 a01.korrelate.net
 a02.korrelate.net
@@ -148710,7 +148703,6 @@ cdn.amgdgt.com
 js.bizographics.com
 images.ddc.com
 cdn.firstlook.com
-m2.fwmrm.net
 cache.gfrevenge.com
 cache.izearanks.com
 crtv.mate1.com
