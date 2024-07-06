@@ -124,12 +124,15 @@ try {
                     continue
                 }
                 else {
+                    $isWhiteListed = $false
                     foreach ($rx in $regexWhiteList) {
                         if ($url -imatch $rx) {
                             Write-Host "WHITELISTED: $($url)"
-                            continue
+                            $isWhiteListed = $true
+                            break;
                         }
                     }
+                    if($isWhiteListed){continue}
                 }
                 if ($master.Contains($url)) { continue }
 
