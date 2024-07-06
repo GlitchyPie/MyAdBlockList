@@ -119,7 +119,6 @@ try {
                 else {
                     $url = $split[1]
                 }
-
                 if ($whitelist -icontains $url) { 
                     Write-Host "WHITELISTED: $($url)"
                     continue

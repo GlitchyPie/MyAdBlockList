@@ -29,6 +29,6 @@ analytics.faw.sky.com
 
 vbo2hhedhkakabpe8j5malnav.litix.io
 
-|\.v\.fwmrm\.net$|
+|v\.fwmrm\.net$|
 
-|\.litix\.io$|
+|litix\.io$|
